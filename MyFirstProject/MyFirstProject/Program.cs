@@ -12,7 +12,7 @@
             Console.WriteLine(5 % 2);
             // apple
             Console.WriteLine((double)2 / 4);
-            string fruit = "peach";
+            string fruit = "peach and orange";
             Console.WriteLine(fruit);
             int fruitsAmount = 5;
         }
