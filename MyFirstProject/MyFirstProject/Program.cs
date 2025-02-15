@@ -10,6 +10,7 @@
             int sum = a + b;
             Console.WriteLine(sum);
             Console.WriteLine(5 % 2);
+            // apple
             Console.WriteLine((double)2 / 4);
             string fruit = "apple";
             Console.WriteLine(fruit);
