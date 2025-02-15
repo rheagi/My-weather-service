@@ -4,17 +4,12 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
-            int a = 10;
-            int b = 15;
-            int sum = a + b;
-            Console.WriteLine(sum);
-            Console.WriteLine(5 % 2);
-            // apple
-            Console.WriteLine((double)2 / 4);
-            string fruit = "peach and orange";
-            Console.WriteLine(fruit);
-            int fruitsAmount = 5;
+            Console.WriteLine("Hello! This is ROCK PAPER SCISSORS game.");
+            Console.Write("Player 1, type your choice: ");
+            string choice1 = Console.ReadLine();
+            Console.Write("Player 2, type your choice: ");
+            string choice2 = Console.ReadLine();
+
         }
     }
 }
