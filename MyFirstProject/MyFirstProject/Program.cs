@@ -9,7 +9,7 @@
             string choice1 = Console.ReadLine();
             Console.Write("Player 2, type your choice: ");
             string choice2 = Console.ReadLine();
-
+            int a = 1;
         }
     }
 }
