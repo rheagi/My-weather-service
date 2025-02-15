@@ -13,6 +13,7 @@
             Console.WriteLine((double)2 / 4);
             string fruit = "apple";
             Console.WriteLine(fruit);
+            int fruitsAmount = 5;
         }
     }
 }
