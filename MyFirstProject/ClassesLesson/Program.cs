@@ -11,10 +11,9 @@
             do
             {
                 string choice = Console.ReadLine().ToLower();
-                newCup = myCoffeeMaker.MakeCoffee(choice);
+                newCup = myCoffeeMaker.ServeCoffee(choice);
             }
             while (newCup == null);
-
         }
     }
 }

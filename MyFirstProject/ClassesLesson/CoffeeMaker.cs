@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClassesLesson.Recipes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,77 +17,38 @@ namespace ClassesLesson
             Console.Write("Choose what you want: ");
         }
 
-        public Cup MakeCoffee(string choice)
+        public CoffeeRecipe SelectRecipe(string choice)
         {
-            Cup drink;
-
             switch (choice)
             {
                 case "espresso":
-                    drink = MakeEspresso();
-                    break;
+                    return new EspressoRecipe();
                 case "americano":
-                    drink = MakeAmericano();
-                    break;
+                    return new AmericanoRecipe();
                 case "cappuccino":
-                    drink = MakeCappuccino();
-                    break;
+                    return new CappuccinoRecipe();
                 case "latte":
-                    drink = MakeLatte();
-                    break;
+                    return new LatteRecipe();
                 case "mocha":
-                    drink = MakeMocha();
-                    break;
+                    return new MochaRecipe();
                 default:
                     Console.Write("\nMistake! Try again: ");
                     return null;
             }
+        }
+
+        public Cup ServeCoffee(string choice)
+        {
+            CoffeeRecipe recipe = SelectRecipe(choice);
+
+            if (recipe == null)
+                return null;
+
+            Cup cup = SetCup();
+            recipe.MakeCoffee(cup);
 
             Console.WriteLine($"\nYour {choice} is ready. Enjoy!");
-            return drink;
-
-        }
-
-
-        private Cup MakeEspresso()
-        {
-            Cup espressoCup = SetCup();
-            AddCoffee(espressoCup);
-            return espressoCup;
-        }
-
-        private Cup MakeAmericano()
-        {
-            Cup americanoCup = SetCup();
-            AddCoffee(americanoCup);
-            AddWater(americanoCup);
-            return americanoCup;
-        }
-
-        private Cup MakeCappuccino()
-        {
-            Cup cappuccinoCup = SetCup();
-            AddCoffee(cappuccinoCup);
-            AddMilk(cappuccinoCup);
-            return cappuccinoCup;
-        }
-
-        private Cup MakeLatte()
-        {
-            Cup latteCup = SetCup();
-            AddCoffee(latteCup);
-            AddMilk(latteCup);
-            AddMilk(latteCup);
-            return latteCup;
-        }
-
-        private Cup MakeMocha()
-        {
-            Cup mochaCup = SetCup();
-            AddCoffee(mochaCup);
-            AddMilk(mochaCup);
-            AddChocolate(mochaCup);
-            return mochaCup;
+            return cup;
         }
 
         private Cup SetCup()
@@ -94,28 +56,6 @@ namespace ClassesLesson
             return new Cup();
         }
 
-        private void AddCoffee(Cup cup)
-        {
-            Console.WriteLine("Adding coffee...");
-            cup.Content.Add("coffee");
-        }
-
-        private void AddMilk(Cup cup)
-        {
-            Console.WriteLine("Adding milk...");
-            cup.Content.Add("milk");
-        }
-
-        private void AddWater(Cup cup)
-        {
-            Console.WriteLine("Adding water...");
-            cup.Content.Add("water");
-        }
-
-        private void AddChocolate(Cup cup)
-        {
-            Console.WriteLine("Adding chocolate...");
-            cup.Content.Add("chocolate");
-        }
+        
     }
 }
