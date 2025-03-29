@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace List
 {
-    public class MyList
+    public class MyList<T>
     {
-        private int[] _array;
+        private T[] _array;
 
         public int Capacity { get; set; }
 
@@ -16,27 +16,27 @@ namespace List
 
         public MyList()
         {
-            _array = new int[2];
+            _array = new T[2];
             Capacity = _array.Length;
             Count = 0;
         }
 
         public MyList(int length)
         {
-            _array = new int[length];
+            _array = new T[length];
             Capacity = length;
             Count = 0;
         }
 
-        public MyList(int length, int element)
+        public MyList(int length, T element)
         {
-            _array = new int[length];
+            _array = new T[length];
             _array[0] = element;
             Capacity = length;
             Count = 1;
         }
 
-        public void Add(int element)
+        public void Add(T element)
         {
             if (Count >= Capacity)
                 Resize();
@@ -45,13 +45,13 @@ namespace List
             Count++;
         }
 
-        public void Add(int[] elements)
+        public void Add(T[] elements)
         {
             for(int i = 0; i < elements.Length; i++)
                 Add(elements[i]);
         }
 
-        public void Add(int index, int element)
+        public void Add(int index, T element)
         {
             if (Count >= Capacity)
                 Resize();
@@ -65,6 +65,30 @@ namespace List
             Count++;
         }
 
+        public void Sort()
+        {
+            bool arrayIsSorted = false;
+            while (arrayIsSorted == false)
+            {
+                arrayIsSorted = true;
+
+                for (int i = 0; i < Count - 1; i++)
+                {
+                    if (_array[i] > _array[i + 1])
+                    {
+                        T prevElement = _array[i];
+                        T nextElement = _array[i + 1];
+                        _array[i + 1] = prevElement;
+                        _array[i] = nextElement;
+
+                        arrayIsSorted = false;
+                    }
+                }
+            }
+
+        }
+
+
         //public void Add(int index, int[] elements)
         //{
         //    foreach(int element in elements)
@@ -74,7 +98,7 @@ namespace List
         //    }
         //}
 
-        public void Add(int index, int[] elements)
+        public void Add(int index, T[] elements)
         {
             Count = Count + elements.Length;
             if (Count >= Capacity)
@@ -85,7 +109,7 @@ namespace List
                 _array[i] = _array[i - elements.Length];
             }
 
-            foreach (int element in elements)
+            foreach (T element in elements)
             {
                 _array[index] = element;
                 index++;
@@ -93,7 +117,7 @@ namespace List
             Count++;
         }
 
-        public int this[int index]
+        public T this[int index]
         {
             get
             {
@@ -118,7 +142,7 @@ namespace List
         private void Resize()
         {
             int newLength = _array.Length * 2;
-            var newArray = new int[newLength];
+            T[] newArray = new T[newLength];
 
             Copy(_array, newArray);
             _array = newArray;
@@ -129,7 +153,7 @@ namespace List
         private void Resize(int count)
         {
             int newLength = count * 2;
-            var newArray = new int[newLength];
+            var newArray = new T[newLength];
 
             Copy(_array, newArray);
             _array = newArray;
@@ -137,7 +161,7 @@ namespace List
             Capacity = _array.Length;
         }
 
-        private void Copy(int[] sourceArray, int[] destinationArray)
+        private void Copy(T[] sourceArray, T[] destinationArray)
         {
             if(sourceArray.Length > destinationArray.Length)
             {
