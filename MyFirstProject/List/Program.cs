@@ -16,12 +16,10 @@
 
             //Console.WriteLine(List[1]);
 
-            MyList myList = new MyList();
+            MyList<int> myList = new MyList<int>();
             int[] array = { 5, 4, 3, 2, 1 };
             myList.Add(array);
             myList.Sort();
-            Console.WriteLine("pupupu");
-
         }
     }
 }

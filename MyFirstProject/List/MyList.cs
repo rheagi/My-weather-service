@@ -74,7 +74,7 @@ namespace List
 
                 for (int i = 0; i < Count - 1; i++)
                 {
-                    if (_array[i] > _array[i + 1])
+                    if (IsGreater(_array[i], _array[i + 1]))
                     {
                         T prevElement = _array[i];
                         T nextElement = _array[i + 1];
@@ -88,15 +88,22 @@ namespace List
 
         }
 
+        /// <summary>
+        /// Метод сравнивает два объекта, если 1 больше 2 возвращает true, есл меньше false
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
+        
+        public bool IsGreater(T item1, T item2)
+        {
+            if (item1 is IComparable<T> comparable1)
+            {
+                return comparable1.CompareTo(item2) > 0;
+            }
+            
+            throw new Exception("Not supported :(");
+        }
 
-        //public void Add(int index, int[] elements)
-        //{
-        //    foreach(int element in elements)
-        //    {
-        //        Add(index, element);
-        //        index++;
-        //    }
-        //}
 
         public void Add(int index, T[] elements)
         {
