@@ -1,15 +1,19 @@
-﻿namespace MyFirstProject
+﻿using MyLinkedList;
+
+namespace MyFirstProject
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello! This is ROCK PAPER SCISSORS game.");
-            Console.Write("Player 1, type your choice: ");
-            string choice1 = Console.ReadLine();
-            Console.Write("Player 2, type your choice: ");
-            string choice2 = Console.ReadLine();
-            int a = 1;
+            MyCustomLinkedList linkedList = new MyCustomLinkedList();
+            linkedList.Add(10);
+            linkedList.Add(20);
+            linkedList.Add(30);
+            linkedList.Add(0, 100);
+            linkedList[1] = 7;
+            Console.WriteLine(linkedList[1]);
         }
+
     }
 }
