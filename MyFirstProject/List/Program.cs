@@ -4,22 +4,23 @@
     {
         static void Main(string[] args)
         {
-            //MyList List = new MyList();
-            //List.Add(1);
-            //List.Add(13);
-            //List.Add(4);
-            //List.Add(5);
-
-            //int[] array = new int[] { 11, 5, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80 };
-
-            //List.Add(2, array);
-
-            //Console.WriteLine(List[1]);
-
             MyList<int> myList = new MyList<int>();
-            int[] array = { 5, 4, 3, 2, 1 };
+
+            myList.Add(1);
+            myList.Add(13);
+            int[] array = { 5, 4, 3 };
+            int[] array2 = { 12, 87, 9 };
+            int[] array3 = { 33, 14 };
+
             myList.Add(array);
+            myList.Add(2, array3);
+            myList.Add(3, 75);
+            myList.Add(5, array2);
+            myList.Add(7);
+            Console.WriteLine("Added elements");
+
             myList.Sort();
+            Console.WriteLine("Sorted my list");
         }
     }
 }

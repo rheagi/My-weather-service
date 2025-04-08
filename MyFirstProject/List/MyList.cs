@@ -65,6 +65,24 @@ namespace List
             Count++;
         }
 
+        public void Add(int index, T[] elements)
+        {
+            Count = Count + elements.Length;
+            if (Count >= Capacity)
+                Resize(Count);
+
+            for (int i = Count; i - elements.Length >= index; i--)
+            {
+                _array[i] = _array[i - elements.Length];
+            }
+
+            foreach (T element in elements)
+            {
+                _array[index] = element;
+                index++;
+            }
+        }
+
         public void Sort()
         {
             bool arrayIsSorted = false;
@@ -102,26 +120,6 @@ namespace List
             }
             
             throw new Exception("Not supported :(");
-        }
-
-
-        public void Add(int index, T[] elements)
-        {
-            Count = Count + elements.Length;
-            if (Count >= Capacity)
-                Resize(Count);
-
-            for (int i = Count; i - elements.Length >= index; i--)
-            {
-                _array[i] = _array[i - elements.Length];
-            }
-
-            foreach (T element in elements)
-            {
-                _array[index] = element;
-                index++;
-            }
-            Count++;
         }
 
         public T this[int index]
